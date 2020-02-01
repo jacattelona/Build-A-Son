@@ -14,8 +14,14 @@ public class FollowCam : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        Vector3 startPos = new Vector3();
+        startPos.x = target.position.x;
+        startPos.y = target.position.y + 3;
+        startPos.z = target.position.z - 6;
+        transform.position = startPos;
         offset = new Vector3(target.position.x, target.position.y + awayY, target.position.z + awayZ);
     }
+
 
     void LateUpdate()
     {

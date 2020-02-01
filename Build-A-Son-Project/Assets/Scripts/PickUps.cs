@@ -12,7 +12,7 @@ public class PickUps : MonoBehaviour
     {
         if (carrying != null)
         {
-            Vector3 temp = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
+            Vector3 temp = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
             carrying.transform.position = temp + transform.forward * 1.5f;
         }
     }
@@ -23,6 +23,15 @@ public class PickUps : MonoBehaviour
         {
             print("Oh Boy I hit it hooray");
             carrying = collision.gameObject;
+        }
+
+        if (collision.transform.tag == "Altar" && carrying != null)
+        {
+            Vector3 temp = collision.transform.position;
+            temp.y += 1;
+            carrying.transform.position = temp;
+            carrying.tag = "Untagged";
+            carrying = null;
         }
     }
 }
